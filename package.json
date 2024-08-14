@@ -14,11 +14,9 @@
     "@nuxt/fonts": "^0.7.2",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
-    "nuxt": "^3.12.4",
     "nuxt-og-image": "^3.0.0-rc.64"
   },
   "devDependencies": {
-
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.5.0",
     "@typescript-eslint/eslint-plugin": "^7.12.0",
@@ -27,6 +25,7 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
+    "nuxt": "^3.12.4",
     "sass": "1.77.6",
     "typescript": "5.3.3",
     "vite-plugin-static-copy": "^1.0.6",
