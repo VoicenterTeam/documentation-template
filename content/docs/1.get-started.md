@@ -1,4 +1,12 @@
-# Nuxt UI Minimal Starter
+---
+title: Getting started Page
+description: Getting started Page description
+navigation:
+  title: Get Stared
+  icon: Test icon
+---
+
+# Nuxt UI Minimal Starter 1
 
 Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
 
@@ -6,7 +14,7 @@ Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nux
 
 Make sure to install the dependencies:
 
-```bash
+```vue
 # npm
 npm install
 

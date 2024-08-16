@@ -20,10 +20,8 @@ defineOptions({
 })
 
 const colorMode = useColorMode()
-// const appConfig = useAppConfig()
 
 // Computed
-
 const isDark = computed({
     get () {
         return colorMode.value === 'dark'

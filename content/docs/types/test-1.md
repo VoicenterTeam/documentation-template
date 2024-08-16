@@ -1,6 +1,7 @@
 ---
 title: 'Title of the page'
 description: 'meta description of the page'
+icon: 'i-heroicons-sun-20-solid'
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -12,6 +13,8 @@ links:
 Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
 
 ## Setup
+
+### Setup Test
 
 Make sure to install the dependencies:
 
@@ -33,21 +36,25 @@ bun install
 
 Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
-npm run dev
+```ts [/server/api/parse-mdc.ts]
+import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 
-# pnpm
-pnpm run dev
+export default eventHandler(async () => {
+  const mdc = [
+    '# Hello MDC',
+    '',
+    '::alert',
+    'This is an Alert',
+    '::'
+  ].join('\n')
 
-# yarn
-yarn dev
+  const ast = await parseMarkdown(mdc)
 
-# bun
-bun run dev
+  return ast
+})
 ```
 
-## Production
+#### Production
 
 Build the application for production:
 

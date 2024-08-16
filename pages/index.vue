@@ -1,38 +1,23 @@
 <template>
-    <div class="w-full">
-        <div class="w-full">
-            Index Vue Page
-            <div>
-                <ContentRenderer
-                    v-if="page?.body"
-                    :value="page"
-                    class="prose"
-                />
-            </div>
-        </div>
+    <div class="w-full h-full dark:bg-gradient-to-b from-gray-950 to-gray-900 pt-[var(--header-height)]">
+        <WelcomePageContent />
     </div>
 </template>
 
 <script setup lang="ts">
 
-import type { ParsedContent } from '@nuxt/content'
+import WelcomePageContent from '~/components/WelcomePageContent.vue'
 
 definePageMeta({
-    layout: 'docs'
+    layout: 'welcome'
 })
 
 
-const { data: page } = await useAsyncData('content-/', () => queryContent('/').findOne())
+const { seo } = useAppConfig()
 
-if (!page.value) {
-    throw createError({
-        statusCode: 404,
-        statusMessage: 'Page not found',
-        fatal: true
-    })
-}
-
-useContentHead(page as Ref<ParsedContent>)
+useHead({
+    title: seo.siteName
+})
 </script>
 
 <style>

@@ -1,29 +1,52 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import path from 'path'
 import fs from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const currentDirProcess = process.cwd()
+const currentDirLocal = dirname(fileURLToPath(import.meta.url))
+
+/* console.log({ currentDirProcess, currentDirLocal }) */
 
 export default defineNuxtConfig({
     devtools: { enabled: true },
-    modules: [ '@nuxt/ui', '@nuxt/content', '@nuxt/image', '@nuxt/fonts', 'nuxt-og-image' ],
+    modules: [
+        '@nuxt/content',
+        '@nuxt/ui',
+        '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
+        './modules/addPluginsModule.ts'
+    ],
     content: {
         //navigation: true,
+        documentDriven: true,
+        experimental: {
+            search: {
+                ignoredTags: [ 'style', 'code' ]
+            },
+        },
         highlight: {
             // Theme used in all color schemes.
-            theme: 'github-light',
-            preload: [ 'ts', 'js', 'css', 'java', 'json', 'bash', 'vue' ]
+            theme: {
+                default: 'material-theme',
+                light: 'material-theme-lighter',
+                dark: 'material-theme-palenight'
+            },
+            preload: [ 'json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini' ]
+        },
+        navigation: {
+            fields: [ 'icon', 'to', 'target' ]
         }
     },
-    tailwindcss: {
-        cssPath: [ '~/assets/css/tailwind.css', { injectPosition: 'first' } ],
-        configPath: 'tailwind.config',
-    },
+    // tailwindcss: {
+    //     cssPath: [ '~/assets/css/tailwind.css', { injectPosition: 'first' } ],
+    //     configPath: 'tailwind.config',
+    // },
     hooks: {
         'build:before': () => {
-            console.log('NITROOOOOOO')
-            const output = path.join(__dirname, 'content')
+            const output = join(currentDirProcess, 'content/docs')
             const file = 'README.md'
-            const src = path.join(__dirname, file)
-            const dest = path.join(output, 'index.md')
+            const src = join(currentDirProcess, file)
+            const dest = join(output, '1.get-started.md')
             fs.copyFileSync(src, dest)
         },
         // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
@@ -35,5 +58,5 @@ export default defineNuxtConfig({
             globals.forEach(c => c.global = true)
         }
     },
-    css: [ '~/assets/css/main.css' ]
+    css: [ join(currentDirLocal, 'assets/css/main.css') ]
 })
