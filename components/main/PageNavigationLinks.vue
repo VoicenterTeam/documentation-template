@@ -31,7 +31,7 @@
                         :links="link.children"
                         :ui="{
                             wrapper: 'border-s border-gray-200 dark:border-gray-800 text-lg space-y-2',
-                            base: 'group block border-s -ms-px leading-6 before:hidden mt-1',
+                            base: 'group block border-s -ms-px leading-6 before:hidden',
                             padding: 'py-0.5 ps-4',
                             rounded: '',
                             font: '',

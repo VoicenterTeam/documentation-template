@@ -76,7 +76,7 @@ function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = [
     return data.children?.reduce((acc, item) => {
         if (!item.children) {
             acc.push({
-                icon: 'i-heroicons:document-text',
+                icon: item.icon || 'i-heroicons:document-text',
                 to: item._path,
                 label: item.title
             })
@@ -102,14 +102,9 @@ function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = [
             }
         }
     }
-    .groups-list {
+    .group-block:has(a.active-link) {
         .nav-icon-block {
-            @apply rounded-md p-1 inline-flex ring-inset ring-1 bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700
-        }
-        .group-block:has(a.active-link) {
-            .nav-icon-block {
-                @apply text-primary-500 dark:text-primary-400;
-            }
+            @apply text-primary-500 dark:text-primary-400;
         }
     }
 }
