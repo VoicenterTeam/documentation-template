@@ -145,7 +145,7 @@ export default <Partial<Config>> {
                             '--tw-prose-captions': 'rgb(var(--color-gray-500))',
                             '--tw-prose-code': 'rgb(var(--color-gray-900))',
                             '--tw-prose-pre-code': 'rgb(var(--color-gray-900))',
-                            '--tw-prose-pre-bg': 'rgb(var(--color-gray-50))',
+                            '--tw-prose-pre-bg': 'rgb(var(--color-gray-100))',
                             '--tw-prose-pre-border': 'rgb(var(--color-gray-200))',
                             '--tw-prose-th-borders': 'rgb(var(--color-gray-300))',
                             '--tw-prose-td-borders': 'rgb(var(--color-gray-200))',

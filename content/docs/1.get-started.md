@@ -3,7 +3,6 @@ title: Getting started Page
 description: Getting started Page description
 navigation:
   title: Get Stared
-  icon: Test icon
 ---
 
 # Nuxt UI Minimal Starter 1

@@ -7,62 +7,12 @@
             </client-only>-->
             <div>
                 <div class="flex flex-col gap-3 mb-3 general-list">
-                    <div
-                        v-for="(genItem, index) in navigationListMapped.general"
-                        :key="`general-${index}`"
-                        class="flex items-center gap-2"
+                    <template
+                        v-for="(navItem, i) in navigationListMapped"
+                        :key="`${navItem.to || `nav-${i}`}`"
                     >
-                        <NuxtLink
-                            class="flex items-center gap-2 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-                            :to="genItem.to"
-                        >
-                            <div class="nav-icon-block">
-                                <UIcon
-                                    :name="genItem.icon"
-                                    class="nav-icon"
-                                />
-                            </div>
-                            {{ genItem.label }}
-                        </NuxtLink>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-3 groups-list">
-                    <div
-                        v-for="(groupItem, grIndex) in navigationListMapped.groups"
-                        :key="`group-${grIndex}`"
-                        class="group-block"
-                    >
-                        <div class="flex items-center gap-2">
-                            <div class="nav-icon-block">
-                                <UIcon
-                                    :name="groupItem.icon"
-                                    class="nav-icon"
-                                />
-                            </div>
-                            {{ groupItem.label }}
-                        </div>
-                        <div class="pl-2 pt-3">
-                            <UVerticalNavigation
-                                :links="groupItem.children"
-                                :ui="{
-                                    wrapper: 'border-s border-gray-200 dark:border-gray-800 text-lg space-y-2',
-                                    base: 'group block border-s -ms-px leading-6 before:hidden',
-                                    padding: 'py-0.5 ps-4',
-                                    rounded: '',
-                                    font: '',
-                                    ring: '',
-                                    size: 'text-base',
-                                    icon: {
-                                        base: 'flex-shrink-0 w-5 h-5 relative',
-                                        active: 'text-primary-500 dark:text-primary-400',
-                                        inactive: 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200',
-                                    },
-                                    active: 'flex items-center text-primary-500 dark:text-primary-400 border-current font-semibold active-link',
-                                    inactive: 'flex items-center border-transparent hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300'
-                                }"
-                            />
-                        </div>
-                    </div>
+                        <PageNavigationLinks :link="navItem" />
+                    </template>
                 </div>
             </div>
         </div>
@@ -73,15 +23,10 @@
 import type { Ref } from 'vue'
 import type { NavItem } from '@nuxt/content'
 import type { INavigationMapped } from '~/types'
-
-interface INavigationData {
-    general: Array<INavigationMapped>
-    groups: Array<INavigationMapped>
-}
-
+import PageNavigationLinks from '~/components/main/PageNavigationLinks.vue'
 
 const navigation = inject<Ref<NavItem[]>>('navigation')
-console.log({ navigation })
+// console.log({ navigation })
 const navigationListMapped = computed(() => {
     return mapNavigation(navigation?.value || [])
 })
@@ -97,30 +42,32 @@ const navigationListMapped = computed(() => {
 // }
 
 function mapNavigation (navigation: Array<NavItem>) {
-    return navigation.reduce((acc, item) => {
-        if (item._path === '/docs' && item.children) {
-            item.children.forEach(child => {
-                if (!child.children) {
-                    acc.general.push({
-                        icon: 'i-heroicons-book-open',
-                        to: child._path,
-                        label: child.title
-                    })
-                } else {
-                    acc.groups.push({
-                        children: getChildrenGroups(child),
-                        icon: 'i-heroicons-square-3-stack-3d-16-solid',
-                        to: child._path,
-                        label: child.title
-                    })
-                }
-            })
+    const navItems = navigation.find(i => i._path === '/docs')?.children || []
+    return mapContentNavigation(navItems, true)
+}
+function mapContentNavigation (navigation: NavItem[], isRoot = false): Array<INavigationMapped> {
+    const navMap = {
+        iconRoot: 'i-heroicons-book-open',
+        iconFolder: 'i-heroicons-square-3-stack-3d-16-solid',
+        iconPage: 'i-heroicons:document-text'
+    }
+
+    return navigation.map((navLink) => {
+        if (navLink.children) {
+            return {
+                icon: navMap.iconFolder,
+                to: navLink._path,
+                label: navLink.title,
+                children: getChildrenGroups(navLink, [])
+            }
         }
-        return acc
-    }, {
-        general: [],
-        groups: []
-    } as INavigationData)
+
+        return {
+            icon: navLink.icon || (isRoot ? navMap.iconRoot : navMap.iconPage),
+            to: navLink._path,
+            label: navLink.title
+        }
+    })
 }
 function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = []): Array<INavigationMapped>  {
     if (!data.children) {

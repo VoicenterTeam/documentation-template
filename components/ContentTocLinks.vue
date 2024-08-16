@@ -1,27 +1,29 @@
 <template>
-    <ul
-        v-if="links?.length"
-        :class="config.wrapper"
-    >
-        <li
-            v-for="link in links"
-            :key="link.text"
-            :class="[config.wrapper, link.depth === 3 && config.depth]"
+    <ClientOnly>
+        <ul
+            v-if="links?.length"
+            :class="config.wrapper"
         >
-            <a
-                :href="`#${link.id}`"
-                :class="[config.base, activeHeadings.includes(link.id) ? config.active : config.inactive]"
-                @click.prevent="scrollToHeading(link.id)"
+            <li
+                v-for="link in links"
+                :key="link.text"
+                :class="[config.wrapper, link.depth === 3 && config.depth]"
             >
-                {{ link.text }}
-            </a>
+                <a
+                    :href="`#${link.id}`"
+                    :class="[config.base, activeHeadings.includes(link.id) ? config.active : config.inactive]"
+                    @click.prevent="scrollToHeading(link.id)"
+                >
+                    {{ link.text }}
+                </a>
 
-            <ContentTocLinks
-                v-if="link.children"
-                :links="link.children"
-            />
-        </li>
-    </ul>
+                <ContentTocLinks
+                    v-if="link.children"
+                    :links="link.children"
+                />
+            </li>
+        </ul>
+    </ClientOnly>
 </template>
 
 <script setup lang="ts">

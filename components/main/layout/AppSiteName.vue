@@ -1,18 +1,19 @@
 <template>
-    <NuxtLink
-        v-if="seo?.siteName"
-        to="/"
-        class="text-sm inline-flex items-center gap-1"
-    >
-        <span>{{ seo?.siteName }}</span>
-        <span v-if="version">({{ version }})</span>
-    </NuxtLink>
+    <ClientOnly>
+        <NuxtLink
+            v-if="seo?.siteName"
+            to="/"
+            class="text-sm inline-flex items-center gap-1"
+        >
+            <span>{{ seo?.siteName }}</span>
+            <span v-if="siteVersion">({{ siteVersion }})</span>
+        </NuxtLink>
+    </ClientOnly>
 </template>
 
 <script setup lang="ts">
 import { version } from '~/package.json'
 
 const { seo } = useAppConfig()
-
-console.log(version)
+const siteVersion = version
 </script>

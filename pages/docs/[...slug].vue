@@ -54,7 +54,7 @@ definePageMeta({
 })
 
 const { path } = useRoute()
-const { data: page } = await useAsyncData(`${path}`, () => queryContent(path).findOne())
+const { data: page } = await useAsyncData('docs', () => queryContent(path).findOne())
 if (!page.value) {
     throw createError({
         statusCode: 404,
