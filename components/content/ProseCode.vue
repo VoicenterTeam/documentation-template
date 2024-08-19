@@ -27,8 +27,6 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import ProseCodeButton from '~/components/content/ProseCodeButton.vue'
-import ProseCodeIcon from '~/components/content/ProseCodeIcon.vue'
 
 defineProps({
     code: {

@@ -41,7 +41,7 @@ const config = {
 defineOptions({
     inheritAttrs: false
 })
-const props = defineProps({
+defineProps({
     links: {
         type: Array as PropType<TocLink[]>,
         default: () => []

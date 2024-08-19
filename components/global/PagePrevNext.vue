@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import PageBottomNavLink from '~/components/main/PageBottomNavLink.vue'
 
 const { prev, next } = useContent()
 

@@ -2,7 +2,7 @@
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-4">
             <div class="lg:col-span-2 lg:max-h-[calc(100vh-var(--header-height))] relative lg:sticky lg:top-[var(--header-height)] overflow-y-auto -mx-3 px-3 overflow-x-hidden">
-                <AppAside class="py-8" />
+                <LayoutAppAside class="py-8" />
             </div>
             <div
                 :class="tocList?.length ? 'lg:col-span-6' : 'lg:col-span-8'"
@@ -43,10 +43,6 @@
 </template>
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content'
-import AppAside from '~/components/main/layout/AppAside.vue'
-import PageTocList from '~/components/main/PageTocList.vue'
-import PagePrevNext from '~/components/main/PagePrevNext.vue'
-import PageHeader from '~/components/main/PageHeader.vue'
 import { splitByCase, upperFirst } from 'scule'
 
 definePageMeta({

@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import WelcomePageContent from '~/components/WelcomePageContent.vue'
 
 definePageMeta({
     layout: 'welcome'

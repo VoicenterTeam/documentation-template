@@ -40,7 +40,7 @@
                             icon: {
                                 base: 'flex-shrink-0 w-5 h-5 relative',
                                 active: 'text-primary-500 dark:text-primary-400',
-                                inactive: 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200',
+                                inactive: 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200'
                             },
                             active: 'flex items-center text-primary-500 dark:text-primary-400 border-current font-semibold active-link',
                             inactive: 'flex items-center border-transparent hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300'

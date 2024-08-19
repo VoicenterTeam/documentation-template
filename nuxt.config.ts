@@ -37,13 +37,12 @@ export default defineNuxtConfig({
             fields: [ 'icon', 'to', 'target' ]
         }
     },
-    // tailwindcss: {
-    //     cssPath: [ '~/assets/css/tailwind.css', { injectPosition: 'first' } ],
-    //     configPath: 'tailwind.config',
-    // },
     hooks: {
         'build:before': () => {
             const output = join(currentDirProcess, 'content/docs')
+            if (!fs.existsSync(output)) {
+                fs.mkdirSync(output, { recursive: true })
+            }
             const file = 'README.md'
             const src = join(currentDirProcess, file)
             const dest = join(output, '1.get-started.md')
@@ -58,5 +57,17 @@ export default defineNuxtConfig({
             globals.forEach(c => c.global = true)
         }
     },
-    css: [ join(currentDirLocal, 'assets/css/main.css') ]
+    routeRules: {
+        '/docs': {
+            redirect: '/docs/get-started',
+            prerender: false
+        },
+    },
+    // components: {
+    //     global: true,
+    // },
+    css: [
+        join(currentDirLocal, 'assets/css/main.css'),
+        join(currentDirLocal, 'assets/css/tailwind.css')
+    ]
 })

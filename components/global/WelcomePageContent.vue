@@ -18,6 +18,5 @@
 
 <script setup lang="ts">
 
-import WelcomePageNavigation from '~/components/WelcomePageNavigation.vue'
 </script>
 

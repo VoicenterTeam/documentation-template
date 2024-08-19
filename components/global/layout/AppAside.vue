@@ -23,7 +23,6 @@
 import type { Ref } from 'vue'
 import type { NavItem } from '@nuxt/content'
 import type { INavigationMapped } from '~/types'
-import PageNavigationLinks from '~/components/main/PageNavigationLinks.vue'
 
 const navigation = inject<Ref<NavItem[]>>('navigation')
 // console.log({ navigation })
