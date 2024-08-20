@@ -3,14 +3,14 @@
         <LayoutAppHeader class="sticky top-0 z-50" />
         <main class="flex-grow min-h-[calc(100vh-var(--header-height))]">
             <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                <div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-4">
-                    <div class="lg:col-span-2 lg:max-h-[calc(100vh-var(--header-height))] relative lg:sticky lg:top-[var(--header-height)] overflow-y-auto -mx-3 px-3 overflow-x-hidden">
+                <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-4">
+                    <div class="lg:col-span-3 lg:max-h-[calc(100vh-var(--header-height))] relative lg:sticky lg:top-[var(--header-height)] overflow-y-auto -mx-3 px-3 overflow-x-hidden">
                         <LayoutAppAside
                             :navigation="navigationListMapped"
                             class="py-8"
                         />
                     </div>
-                    <div class="lg:col-span-8">
+                    <div class="lg:col-span-9">
                         <slot />
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const navigationListMapped = computed(() => {
 })
 
 function mapNavigation (navigation: Array<NavItem>) {
-    const navDocsItems = navigation.find(i => i._path === '/docs')?.children || []
+    const navDocsItems = navigation.find(i => i._path === '/api')?.children || []
     return mapContentNavigation(navDocsItems, true)
 }
 
@@ -77,24 +77,5 @@ function mapSecondChildrenGroups (data: Array<NavItem>): Array<INavigationMapped
         }
     })
 }
-// function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = []): Array<INavigationMapped>  {
-//     if (!data.children) {
-//         return []
-//     }
-//     return data.children?.reduce((acc, item) => {
-//         if (!item.children) {
-//             acc.push({
-//                 icon: item.icon || 'i-heroicons:document-text',
-//                 to: item._path,
-//                 label: item.title
-//             })
-//         } else {
-//             return getChildrenGroups(item, acc)
-//
-//         }
-//         return acc
-//     }, initial)
-// }
-
 </script>
 

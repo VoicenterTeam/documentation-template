@@ -14,7 +14,8 @@ export default defineNuxtConfig({
         '@nuxt/content',
         '@nuxt/ui',
         '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
-        './modules/addPluginsModule.ts'
+        './modules/addPluginsModule.ts',
+        './modules/typedocGenerate.ts'
     ],
     content: {
         //navigation: true,
@@ -62,6 +63,15 @@ export default defineNuxtConfig({
             redirect: '/docs/get-started',
             prerender: false
         },
+        '/api': {
+            redirect: '/api/global',
+            prerender: false
+        },
+    },
+    uiTypedoc: {
+        typesGenerate: true,
+    //     outContent: join(currentDirProcess, 'content/api'),
+    //     entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
     },
     // components: {
     //     global: true,

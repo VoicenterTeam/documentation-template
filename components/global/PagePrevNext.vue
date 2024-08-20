@@ -1,7 +1,7 @@
 <template>
     <div class="bottom-navigation grid sm:grid-cols-2 gap-8">
         <PageBottomNavLink
-            v-if="prev"
+            v-if="prev && prev._path.startsWith(path)"
             :link="prev"
             icon="i-heroicons-arrow-left-20-solid"
             class="prev"
@@ -11,7 +11,7 @@
             class="hidden sm:block"
         />
         <PageBottomNavLink
-            v-if="next"
+            v-if="next && next._path.startsWith(path)"
             :link="next"
             icon="i-heroicons-arrow-right-20-solid"
             class="next"
@@ -20,6 +20,10 @@
 </template>
 
 <script setup lang="ts">
+
+defineProps<{
+    path: string
+}>()
 
 const { prev, next } = useContent()
 

@@ -1,0 +1,22 @@
+{
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "mergeReadme": false,
+  "modulesFileName": "global",
+  "entryFileName": "_group",
+  "outputFileStrategy": "members",
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "hidePageTitle": true,
+  "hideGroupHeadings": true,
+  "useCodeBlocks": true,
+  "expandObjects":true,
+  "expandParameters": true,
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "list",
+  "propertyMembersFormat": "table"
+}

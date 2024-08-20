@@ -25,7 +25,7 @@ const appConfig = useAppConfig()
 const config = computed(() => ({
     wrapper: 'scroll-mt-[calc(48px+32px+var(--header-height))] lg:scroll-mt-[calc(32px+var(--header-height))]',
     icon: {
-        wrapper: '-ml-6 pr-2 py-1 inline-flex opacity-0 group-hover:lg:opacity-100 transition-opacity absolute',
+        wrapper: '-ml-4 pr-2 py-1 inline-flex opacity-0 group-hover:lg:opacity-100 transition-opacity absolute',
         base: 'w-4 h-4 text-primary',
         name: appConfig.ui.icons.hash
     }

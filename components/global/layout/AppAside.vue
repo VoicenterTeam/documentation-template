@@ -8,7 +8,7 @@
             <div>
                 <div class="flex flex-col gap-3 mb-3 general-list">
                     <template
-                        v-for="(navItem, i) in navigationListMapped"
+                        v-for="(navItem, i) in navigation"
                         :key="`${navItem.to || `nav-${i}`}`"
                     >
                         <PageNavigationLinks :link="navItem" />
@@ -16,76 +16,17 @@
                 </div>
             </div>
         </div>
+        <!--        <pre>{{ mapApiNavigation(ApiNavigation) }}</pre>-->
     </aside>
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import type { NavItem } from '@nuxt/content'
 import type { INavigationMapped } from '~/types'
 
-const navigation = inject<Ref<NavItem[]>>('navigation')
-// console.log({ navigation })
-const navigationListMapped = computed(() => {
-    return mapNavigation(navigation?.value || [])
-})
-// const searchString = ref('')
-// const results = ref([])
-// const searching = ref(false)
-//
-// const search = async () => {
-//     searching.value = true
-//     const res = await searchContent(searchString.value, {})
-//     results.value = res.value // res is a computed so we pluck out the .value and just add it to our ref
-//     searching.value = false
-// }
+defineProps<{
+    navigation: Array<INavigationMapped>
+}>()
 
-function mapNavigation (navigation: Array<NavItem>) {
-    const navItems = navigation.find(i => i._path === '/docs')?.children || []
-    return mapContentNavigation(navItems, true)
-}
-function mapContentNavigation (navigation: NavItem[], isRoot = false): Array<INavigationMapped> {
-    const navMap = {
-        iconRoot: 'i-heroicons-book-open',
-        iconFolder: 'i-heroicons-square-3-stack-3d-16-solid',
-        iconPage: 'i-heroicons:document-text'
-    }
-
-    return navigation.map((navLink) => {
-        if (navLink.children) {
-            return {
-                icon: navMap.iconFolder,
-                to: navLink._path,
-                label: navLink.title,
-                children: getChildrenGroups(navLink, [])
-            }
-        }
-
-        return {
-            icon: navLink.icon || (isRoot ? navMap.iconRoot : navMap.iconPage),
-            to: navLink._path,
-            label: navLink.title
-        }
-    })
-}
-function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = []): Array<INavigationMapped>  {
-    if (!data.children) {
-        return []
-    }
-    return data.children?.reduce((acc, item) => {
-        if (!item.children) {
-            acc.push({
-                icon: item.icon || 'i-heroicons:document-text',
-                to: item._path,
-                label: item.title
-            })
-        } else {
-            return getChildrenGroups(item, acc)
-
-        }
-        return acc
-    }, initial)
-}
 </script>
 
 <style lang="scss">
@@ -101,10 +42,16 @@ function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = [
             }
         }
     }
-    .group-block:has(a.active-link) {
-        .nav-icon-block {
+    .groups-data .nav-item {
+        @apply border-s border-gray-200 dark:border-gray-800 space-y-2 pl-2 mb-1;
+    }
+    .group-block:has(a.router-link-active) {
+        & > .group-item-folder > .nav-icon-block {
             @apply text-primary-500 dark:text-primary-400;
         }
+    }
+    .group-block .group-block {
+        @apply pt-2;
     }
 }
 </style>

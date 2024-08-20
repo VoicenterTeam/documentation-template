@@ -22,10 +22,7 @@
                         </template>
                     </ContentRenderer>
                 </div>
-                <hr class="my-12 border-gray-200 dark:border-gray-800">
-                <div class="mb-12">
-                    <PagePrevNext path="/docs" />
-                </div>
+                <hr class="my-8 border-gray-200 dark:border-gray-800">
             </div>
         </div>
         <div
@@ -41,11 +38,11 @@ import type { ParsedContent } from '@nuxt/content'
 import { splitByCase, upperFirst } from 'scule'
 
 definePageMeta({
-    layout: 'docs'
+    layout: 'docs-api'
 })
 
 const { path } = useRoute()
-const { data: page } = await useAsyncData('docs', () => queryContent(path).findOne())
+const { data: page } = await useAsyncData('api', () => queryContent(path).findOne())
 
 if (!page.value) {
     throw createError({
@@ -56,6 +53,7 @@ if (!page.value) {
 }
 
 useContentHead(page as Ref<ParsedContent>)
+
 useSeoMeta({
     title: `${page.value.title}`,
     ogTitle: `${page.value.title}`,
@@ -79,13 +77,13 @@ const pageContent = computed(() => {
     if (!page.value) {
         return undefined
     }
-    if (path.endsWith('/get-started')) {
-        const newObj = { ...page.value } as  ParsedContent
-        if (newObj.body?.children) {
-            newObj.body.children = newObj.body.children.filter(child => child.tag !== 'h1')
-        }
-        return newObj
-    }
+    // if (path.endsWith('/get-started')) {
+    //     const newObj = { ...page.value } as  ParsedContent
+    //     if (newObj.body?.children) {
+    //         newObj.body.children = newObj.body.children.filter(child => child.tag !== 'h1')
+    //     }
+    //     return newObj
+    // }
 
     return page.value
 })
@@ -95,34 +93,4 @@ function findPageHeadline (page?: ParsedContent | null): string {
     }
     return page._dir?.title ? page._dir.title : splitByCase(page._dir).map(p => upperFirst(p)).join(' ')
 }
-
-/*
-*
-* "mergeReadme": false,
-  "readme": "none",
-  "entryFileName": "index",
-  "modulesFileName": "content",
-  "entryModule": "index",
-  "outputFileStrategy": "members",
-  "excludeScopesInPaths": true,
-  "flattenOutputFiles": false,
-  "hidePageHeader": true,
-  "hideBreadcrumbs": true,
-  "hidePageTitle": true,
-  "hideGroupHeadings": true,
-  "useCodeBlocks": true,
-  "expandObjects":true,
-  "expandParameters": true,
-  "parametersFormat": "table",
-  "interfacePropertiesFormat": "table",
-  "classPropertiesFormat": "table",
-  "enumMembersFormat": "table",
-  "typeDeclarationFormat": "list",
-  "propertyMembersFormat": "table",
-  "navigationModel": {
-    "excludeGroups": false,
-    "excludeCategories": false,
-    "excludeFolders": false
-  }
-* */
 </script>

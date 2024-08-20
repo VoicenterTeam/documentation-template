@@ -28,7 +28,7 @@ export default defineAppConfig({
     },
     header: {
         height: '200px'
-    },
+    }
     // footer: {
     //
     // }
