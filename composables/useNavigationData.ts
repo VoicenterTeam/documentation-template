@@ -1,7 +1,16 @@
 import type { NavItem } from '@nuxt/content'
-import type { INavigationMapped } from '~/types'
+import type { RouteLocationRaw } from 'vue-router'
 
 const { ui } = useAppConfig()
+
+export interface INavigationMapped {
+    to: RouteLocationRaw
+    label: string
+    icon: string
+    labelClass?: string
+    iconClass?: string
+    children?: Array<INavigationMapped>
+}
 
 export const NAV_ICONS = {
     root: ui.icons.navRoot,

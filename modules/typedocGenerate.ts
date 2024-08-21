@@ -5,8 +5,13 @@ import baseDocConfigs from '../typedoc.json'
 import fs from 'fs'
 import { join } from 'path'
 
+const DEFAULT_OUT_TYPES_PATH = './content/api'
 
-export default defineNuxtModule({
+export default defineNuxtModule<{
+    typesGenerate?: boolean
+    outContent?: string
+    entryPoints?: Array<string>
+}>({
     meta: {
         name: 'ui-typedoc',
         configKey: 'uiTypedoc',
@@ -16,8 +21,8 @@ export default defineNuxtModule({
     },
     defaults: {
         outContent: './content/api',
-        typesGenerate: false as boolean | undefined,
-        entryPoints: [] as Array<string> | undefined
+        typesGenerate: false,
+        entryPoints: []
     },
     async setup (options, nuxt) {
         const resolver = createResolver(import.meta.url)
@@ -40,7 +45,7 @@ export default defineNuxtModule({
                     const project = await docApp.convert()
                     if (project) {
                         // Project may not have converted correctly
-                        const outputDir = docOptions?.outContent || join(process.cwd(), options.outContent)
+                        const outputDir = docOptions?.outContent || join(process.cwd(), options.outContent ?? DEFAULT_OUT_TYPES_PATH)
                         // Rendered docs
                         await docApp.generateDocs(project, outputDir)
 
