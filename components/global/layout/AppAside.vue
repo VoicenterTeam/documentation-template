@@ -1,10 +1,6 @@
 <template>
     <aside class="app-aside-block">
         <div class="relative">
-            <!--            <client-only>
-                <input v-model="searchString" @input="search">
-                <pre>{{ results || [] }}</pre>
-            </client-only>-->
             <div>
                 <div class="flex flex-col gap-3 mb-3 general-list">
                     <template
@@ -16,7 +12,6 @@
                 </div>
             </div>
         </div>
-        <!--        <pre>{{ mapApiNavigation(ApiNavigation) }}</pre>-->
     </aside>
 </template>
 

@@ -69,9 +69,9 @@ export default defineNuxtConfig({
         },
     },
     uiTypedoc: {
-        typesGenerate: true,
-    //     outContent: join(currentDirProcess, 'content/api'),
-    //     entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
+        // typesGenerate: true,
+        //     outContent: join(currentDirProcess, 'content/api'),
+        //     entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
     },
     // components: {
     //     global: true,

@@ -3,7 +3,7 @@
         <PageBottomNavLink
             v-if="prev && prev._path.startsWith(path)"
             :link="prev"
-            icon="i-heroicons-arrow-left-20-solid"
+            :icon="ui.icons.navNext ?? ICON_NEXT"
             class="prev"
         />
         <span
@@ -13,7 +13,7 @@
         <PageBottomNavLink
             v-if="next && next._path.startsWith(path)"
             :link="next"
-            icon="i-heroicons-arrow-right-20-solid"
+            :icon="ui.icons.navPrev ?? ICON_PREV"
             class="next"
         />
     </div>
@@ -26,6 +26,11 @@ defineProps<{
 }>()
 
 const { prev, next } = useContent()
+
+const { ui } = useAppConfig()
+
+const ICON_NEXT = 'i-heroicons-arrow-left-20-solid'
+const ICON_PREV = 'i-heroicons-arrow-right-20-solid'
 
 </script>
 

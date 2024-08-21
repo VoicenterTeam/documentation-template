@@ -22,61 +22,12 @@
 
 <script lang="ts" setup>
 import type { NavItem } from '@nuxt/content'
-import type { INavigationMapped } from '~/types'
+import { useNavigationMappedData } from '~/composables/useNavigationData'
 
 const navigation = inject<Ref<NavItem[]>>('navigation')
 
-const navigationListMapped = computed(() => {
-    return mapNavigation(navigation?.value || [])
-})
+const { navigationListMapped } = useNavigationMappedData(navigation, '/docs')
 
-function mapNavigation (navigation: Array<NavItem>) {
-    const navDocsItems = navigation.find(i => i._path === '/docs')?.children || []
-    return mapContentNavigation(navDocsItems, true)
-}
-
-function mapContentNavigation (navigation: NavItem[], isRoot = false): Array<INavigationMapped> {
-    const navMap = {
-        iconRoot: 'i-heroicons-book-open',
-        iconFolder: 'i-heroicons-square-3-stack-3d-16-solid',
-        iconPage: 'i-heroicons:document-text'
-    }
-
-    return navigation.map((navLink) => {
-        if (navLink.children) {
-            return {
-                icon: navMap.iconFolder,
-                to: navLink._path,
-                label: navLink.title,
-                children: mapSecondChildrenGroups(navLink.children)
-            }
-        }
-
-        return {
-            icon: navLink.icon || (isRoot ? navMap.iconRoot : navMap.iconPage),
-            to: navLink._path,
-            label: navLink.title
-        }
-    })
-}
-function mapSecondChildrenGroups (data: Array<NavItem>): Array<INavigationMapped> {
-    return data.map((item: NavItem) => {
-        if (!item.children) {
-            return {
-                icon: item.icon || 'i-heroicons:document-text',
-                to: item._path,
-                label: item.title
-            }
-        } else {
-            return {
-                icon: item.icon || 'i-heroicons-square-3-stack-3d-16-solid',
-                to: item._path,
-                label: item.title,
-                children: mapSecondChildrenGroups(item.children)
-            }
-        }
-    })
-}
 // function getChildrenGroups (data: NavItem, initial: Array<INavigationMapped> = []): Array<INavigationMapped>  {
 //     if (!data.children) {
 //         return []

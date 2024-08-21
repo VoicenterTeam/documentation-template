@@ -20,14 +20,19 @@ export default defineAppConfig({
             hash: 'i-heroicons-hashtag-20-solid',
             menu: 'i-heroicons-bars-3-20-solid',
             close: 'i-heroicons-x-mark-20-solid',
-            check: 'i-heroicons-check-circle-20-solid'
+            check: 'i-heroicons-check-circle-20-solid',
+            navRoot: 'i-heroicons-book-open',
+            navFolder: 'i-heroicons-square-3-stack-3d-16-solid',
+            navPage: 'i-heroicons:document-text',
+            navNext: 'i-heroicons-arrow-left-20-solid',
+            navPrev: 'i-heroicons-arrow-right-20-solid'
         }
     },
     seo: {
         siteName: 'Nuxt UI VC Doc'
     },
     header: {
-        height: '200px'
+        // height: '200px'
     }
     // footer: {
     //
