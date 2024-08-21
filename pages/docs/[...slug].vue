@@ -57,7 +57,7 @@ if (!page.value) {
 
 useContentHead(page as Ref<ParsedContent>)
 useSeoMeta({
-    title: `${page.value.title}`,
+    title: `${page.value.title} | API`,
     ogTitle: `${page.value.title}`,
     description: page.value.description,
     ogDescription: page.value.description
