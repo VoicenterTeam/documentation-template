@@ -7,7 +7,7 @@
             </div>
             <LayoutAppTopNavigation />
             <div class="flex justify-end items-center lg:flex-1">
-                <ButtonAppColorModeButton />
+                <ButtonColorMode />
             </div>
         </div>
     </header>

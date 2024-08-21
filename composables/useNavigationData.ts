@@ -1,8 +1,6 @@
 import type { NavItem } from '@nuxt/content'
 import type { RouteLocationRaw } from 'vue-router'
 
-const { ui } = useAppConfig()
-
 export interface INavigationMapped {
     to: RouteLocationRaw
     label: string
@@ -12,13 +10,15 @@ export interface INavigationMapped {
     children?: Array<INavigationMapped>
 }
 
-export const NAV_ICONS = {
-    root: ui.icons.navRoot,
-    folder: ui.icons.navFolder,
-    page: ui.icons.navPage
-}
-
 export const useNavigationMappedData = (navigation: Ref<NavItem[]> | undefined, filterPath: string) => {
+    const { ui } = useAppConfig()
+
+    const NAV_ICONS = {
+        root: ui.icons.navRoot,
+        folder: ui.icons.navFolder,
+        page: ui.icons.navPage
+    }
+
     const navigationListMapped = computed(() => {
         return mapNavigation(navigation?.value || [], filterPath, true)
     })
