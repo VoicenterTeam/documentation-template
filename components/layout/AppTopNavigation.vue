@@ -1,5 +1,5 @@
 <template>
-    <div class="top-navigation hidden lg:flex lg:flex-1 items-center">
+    <div class="top-navigation hidden md:flex lg:flex-1 items-center">
         <ul class="items-center gap-x-8 flex">
             <li
                 v-for="nav in navigationList"

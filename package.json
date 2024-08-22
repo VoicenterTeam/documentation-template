@@ -9,15 +9,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
     "docs": "typedoc"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.2",
-    "@nuxt/fonts": "^0.7.2",
-    "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
-    "nuxt-og-image": "^3.0.0-rc.64"
+    "@nuxt/image": "^1.7.0",
+    "nuxt": "^3.12.4"
   },
   "files": [
     "app/",
@@ -30,6 +28,8 @@
     "tailwind.config.ts"
   ],
   "devDependencies": {
+    "@nuxt/fonts": "^0.7.2",
+    "nuxt-og-image": "^3.0.0-rc.64",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.5.0",
     "@typescript-eslint/eslint-plugin": "^7.12.0",
@@ -38,7 +38,6 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
-    "nuxt": "^3.12.4",
     "sass": "1.77.6",
     "typedoc": "^0.26.6",
     "typedoc-github-wiki-theme": "^2.0.0",

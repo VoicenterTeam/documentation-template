@@ -5,7 +5,7 @@ navigation:
   title: Get Stared
 ---
 
-# Nuxt UI Minimal Starter 1
+# Nuxt UI Local 1
 
 Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
 

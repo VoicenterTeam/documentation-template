@@ -1,11 +1,39 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
+import { createResolver, defineNuxtModule, } from '@nuxt/kit'
 import * as TypeDoc from 'typedoc'
 import baseDocConfigs from '../typedoc.json'
 import fs from 'fs'
-import { isAbsolute, join } from 'path'
+import { isAbsolute, join, resolve } from 'path'
+import type { Nuxt } from '@nuxt/schema'
 
 const DEFAULT_OUT_TYPES_PATH = './content/api'
+
+const resolver = createResolver(import.meta.url)
+const resolvePath  = resolver.resolvePath('./', { cwd: './' })
+const currentDirProcess = process.cwd()
+
+function isInsideAnotherProject (currentDir: string) {
+    const parentDir = resolve(currentDir, '..')
+    // Check if 'package.json' or 'node_modules' exists in the parent directory
+    return fs.existsSync(join(parentDir, 'package.json')) || fs.existsSync(join(parentDir, 'node_modules'))
+}
+
+async function copyRootReadmeFile (nuxt: Nuxt) {
+    console.log({ currentDirProcess })
+    nuxt.hook('build:done', async () => {
+        const currentPath  = await resolvePath.then()
+        const rootPath = isInsideAnotherProject(currentPath) ? resolve(currentPath, '..') : currentPath
+        const rootReadme = resolver.resolve(rootPath, 'README.md')
+        const dest = join(currentPath, 'content/docs/1.get-started.md')
+        if (!fs.existsSync(rootReadme)) {
+            console.log('not found README.md!', rootReadme)
+            fs.writeFileSync(dest, '# GET STARTED', 'utf8')
+            return
+        }
+        fs.copyFileSync(rootReadme, dest)
+        console.log('copied file to ' + dest)
+    })
+}
 
 export default defineNuxtModule<{
     typesGenerate?: boolean
@@ -30,6 +58,7 @@ export default defineNuxtModule<{
         if (!docOptions) {
             return
         }
+        await copyRootReadmeFile(nuxt)
         const hasTypedocGenerate = docOptions?.typesGenerate !== undefined ? docOptions?.typesGenerate : options.typesGenerate
         if (!hasTypedocGenerate) {
             return

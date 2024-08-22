@@ -4,7 +4,6 @@ import { dirname, join } from 'path'
 
 const currentDirProcess = process.cwd()
 const currentDirLocal = dirname(fileURLToPath(import.meta.url))
-/* console.log({ currentDirProcess, currentDirLocal }) */
 
 export default defineNuxtConfig({
     devtools: { enabled: true },
@@ -37,6 +36,16 @@ export default defineNuxtConfig({
         }
     },
     hooks: {
+        // 'build:before': () => {
+        //     const output = join(currentDirProcess, 'content/docs')
+        //     if (!fs.existsSync(output)) {
+        //         fs.mkdirSync(output, { recursive: true })
+        //     }
+        //     const file = 'README.md'
+        //     const src = join(currentDirProcess, file)
+        //     const dest = join(output, '1.get-started.md')
+        //     fs.copyFileSync(src, dest)
+        // },
         // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
         'components:extend': (components) => {
             const globals = components.filter(c => [
@@ -58,8 +67,7 @@ export default defineNuxtConfig({
     },
     uiTypedoc: {
         // typesGenerate: true,
-        //     outContent: join(currentDirProcess, 'content/api'),
-        //     entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
+        // entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
     },
     // components: {
     //     global: true,
