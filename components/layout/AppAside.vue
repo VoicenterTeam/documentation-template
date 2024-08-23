@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import type { INavigationMapped } from '~/types'
-
 defineProps<{
     navigation: Array<INavigationMapped>
 }>()

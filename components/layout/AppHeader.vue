@@ -7,6 +7,9 @@
             </div>
             <LayoutAppTopNavigation />
             <div class="flex justify-end items-center lg:flex-1">
+                <ClientOnly>
+                    <ContentSearch />
+                </ClientOnly>
                 <ButtonColorMode />
             </div>
         </div>
@@ -14,5 +17,7 @@
 </template>
 
 <script setup lang="ts">
+
+
 </script>
 
