@@ -82,6 +82,7 @@ export default defineNuxtModule<{
                     entryPoints: [ ...entryPoints ],
                 })
                 const project = await docApp.convert()
+                console.log('hasProject', !!project)
                 if (project) {
                     // Project may not have converted correctly
                     const outputDir = docOptions?.outContent || join(process.cwd(), options.outContent ?? DEFAULT_OUT_TYPES_PATH)
