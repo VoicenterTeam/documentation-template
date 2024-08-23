@@ -25,7 +25,10 @@ export default defineAppConfig({
             navFolder: 'i-heroicons-square-3-stack-3d-16-solid',
             navPage: 'i-heroicons:document-text',
             navNext: 'i-heroicons-arrow-left-20-solid',
-            navPrev: 'i-heroicons-arrow-right-20-solid'
+            navPrev: 'i-heroicons-arrow-right-20-solid',
+            navDocs: 'i-heroicons:book-open',
+            navApi: 'i-heroicons:square-3-stack-3d',
+            navDemo: 'i-heroicons:computer-desktop'
         }
     },
     seo: {
