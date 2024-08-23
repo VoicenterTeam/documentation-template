@@ -1,4 +1,5 @@
 {
+  "exclude": ["**/src/**"],
   "plugin": [
     "typedoc-plugin-markdown"
   ],
@@ -18,5 +19,6 @@
   "classPropertiesFormat": "table",
   "enumMembersFormat": "table",
   "typeDeclarationFormat": "list",
-  "propertyMembersFormat": "table"
+  "propertyMembersFormat": "table",
+  "excludeExternals": true
 }

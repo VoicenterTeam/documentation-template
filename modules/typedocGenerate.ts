@@ -3,8 +3,15 @@ import { createResolver, defineNuxtModule, } from '@nuxt/kit'
 import * as TypeDoc from 'typedoc'
 import baseDocConfigs from '../typedoc.json'
 import fs from 'fs'
-import { isAbsolute, join, resolve } from 'path'
+import { join, resolve } from 'path'
 import type { Nuxt } from '@nuxt/schema'
+
+type TUiTypedocModule = {
+    typesGenerate?: boolean
+    outContent?: string
+    entryPoints?: Array<string>
+    exclude?: Array<string>
+}
 
 const DEFAULT_OUT_TYPES_PATH = './content/api'
 
@@ -24,22 +31,24 @@ async function copyRootReadmeFile (nuxt: Nuxt) {
         const currentPath  = await resolvePath.then()
         const rootPath = isInsideAnotherProject(currentPath) ? resolve(currentPath, '..') : currentPath
         const rootReadme = resolver.resolve(rootPath, 'README.md')
-        const dest = join(currentPath, 'content/docs/1.get-started.md')
+        const destFolder = join(currentPath, 'content/docs')
+        const fileName = '1.get-started.md'
+        if (!fs.existsSync(destFolder)) {
+            fs.mkdirSync(destFolder, { recursive: true })
+        }
+        const destination = resolver.resolve(destFolder, fileName)
         if (!fs.existsSync(rootReadme)) {
             console.log('not found README.md!', rootReadme)
-            fs.writeFileSync(dest, '# GET STARTED', 'utf8')
+            fs.writeFileSync(destination, '# GET STARTED', 'utf8')
             return
+        } else {
+            fs.copyFileSync(rootReadme, destination)
+            console.log('copied file to ' + destination)
         }
-        fs.copyFileSync(rootReadme, dest)
-        console.log('copied file to ' + dest)
     })
 }
 
-export default defineNuxtModule<{
-    typesGenerate?: boolean
-    outContent?: string
-    entryPoints?: Array<string>
-}>({
+export default defineNuxtModule<TUiTypedocModule>({
     meta: {
         name: 'ui-typedoc',
         configKey: 'uiTypedoc',
@@ -50,7 +59,8 @@ export default defineNuxtModule<{
     defaults: {
         outContent: './content/api',
         typesGenerate: false,
-        entryPoints: []
+        entryPoints: [],
+        exclude: []
     },
     async setup (options, nuxt) {
         const resolver = createResolver(import.meta.url)
@@ -68,21 +78,27 @@ export default defineNuxtModule<{
             console.error('Need to sdd entryPoints or set typesGenerate to false')
             return
         }
-        nuxt.hook('prepare:types', (opts) => {
-            const addPoints = [ ...entryPoints.map((i: string) => isAbsolute(i) ? i : `../${i}`) ]
-            console.log('addPoints', addPoints)
-            opts.tsConfig.include = [
-                ...(opts.tsConfig.include || []),
-                ...addPoints, // Example: Add your custom paths here
-            ]
-        })
+        // nuxt.hook('prepare:types', (opts) => {
+        //     opts.tsConfig.include = [
+        //         ...(opts.tsConfig.include || []),
+        //         ...entryPoints, // Example: Add your custom paths here
+        //     ]
+        // })
         nuxt.hook('build:done', async () => {
             try {
                 console.log('start api doc', entryPoints)
-                const docApp = await TypeDoc.Application.bootstrapWithPlugins({
+                const currentPath  = await resolvePath.then()
+                const rootPath = isInsideAnotherProject(currentPath) ? resolve(currentPath, '..') : currentPath
+                const typeDocConfigs = {
                     ...baseDocConfigs,
                     entryPoints: [ ...entryPoints ],
-                })
+                    tsconfig: resolver.resolve(rootPath, 'tsconfig.json'),
+                }
+                if (docOptions?.exclude?.length) {
+                    typeDocConfigs.exclude = [ ...docOptions.exclude ]
+                }
+                const docApp = await TypeDoc.Application.bootstrapWithPlugins({ ...typeDocConfigs })
+
                 const project = await docApp.convert()
                 console.log('hasProject', !!project)
                 if (project) {
