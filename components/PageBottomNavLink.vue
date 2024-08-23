@@ -32,7 +32,7 @@ const ICON = {
 }
 
 defineProps<{
-    link: Pick<ParsedContent, string>
+    link?: Pick<ParsedContent, string> | null
     icon?: string
 }>()
 </script>

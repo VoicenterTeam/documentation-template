@@ -1,6 +1,6 @@
 <template>
-    <div class="top-navigation hidden md:flex lg:flex-1 items-center">
-        <ul class="items-center gap-x-8 flex">
+    <div class="top-navigation flex-1 items-center">
+        <ul class="items-center gap-x-2 md:gap-x-8 flex justify-end md:justify-center">
             <li
                 v-for="nav in navigationList"
                 :key="nav.link"
@@ -9,9 +9,17 @@
                 <NuxtLink
                     :to="nav.link"
                     :class="{'text-primary': $route.path?.startsWith(nav.link)}"
-                    class="text-sm/6 font-semibold flex items-center gap-1 hover:text-primary"
+                    class="text-sm/6 font-semibold flex items-center group"
                 >
-                    {{ nav.title }}
+                    <div class="rounded-md p-1.5 inline-flex md:hidden ring-inset ring-1 bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700 group-hover:bg-primary group-hover:ring-primary group-hover:text-background">
+                        <UIcon
+                            :name="nav.icon"
+                            class="size-5"
+                        />
+                    </div>
+                    <span class="hidden md:inline-flex group-hover:text-primary">
+                        {{ nav.title }}
+                    </span>
                 </NuxtLink>
             </li>
         </ul>
@@ -30,20 +38,23 @@ const navigationList = computed(() => {
     const baseLinks = [
         {
             title: 'Documentation',
-            link: '/docs'
+            link: '/docs',
+            icon: 'i-heroicons:book-open'
         }
     ]
     const apiData = navigation?.value.find(i => i._path === '/api')
     if (apiData) {
         baseLinks.push({
             title: 'Api',
-            link: '/api'
+            link: '/api',
+            icon: 'i-heroicons:square-3-stack-3d'
         })
     }
     if (routes.find(i => i.name === 'example')) {
         baseLinks.push({
             title: 'Demo',
-            link: '/example'
+            link: '/example',
+            icon: 'i-heroicons:computer-desktop'
         })
     }
 

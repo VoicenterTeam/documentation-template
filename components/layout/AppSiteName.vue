@@ -3,7 +3,7 @@
         <NuxtLink
             v-if="seo?.siteName"
             to="/public"
-            class="text-sm inline-flex items-center gap-1"
+            class="text-sm items-center gap-1 hidden sm:inline-flex"
         >
             <span>{{ seo?.siteName }}</span>
             <span v-if="siteVersion">({{ siteVersion }})</span>

@@ -23,7 +23,7 @@
                     </ContentRenderer>
                 </div>
                 <hr class="my-12 border-gray-200 dark:border-gray-800">
-                <div class="mb-12">
+                <div class="bottom-navigation-block">
                     <PagePrevNext path="/docs" />
                 </div>
             </div>

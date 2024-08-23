@@ -1,7 +1,10 @@
 <template>
-    <div class="bottom-navigation grid sm:grid-cols-2 gap-8">
+    <div
+        v-if="hasPrev || hasNext"
+        class="bottom-navigation grid sm:grid-cols-2 gap-8 mb-10"
+    >
         <PageBottomNavLink
-            v-if="prev && prev._path.startsWith(path)"
+            v-if="hasPrev"
             :link="prev"
             :icon="ui.icons.navNext ?? ICON_NEXT"
             class="prev"
@@ -11,7 +14,7 @@
             class="hidden sm:block"
         />
         <PageBottomNavLink
-            v-if="next && next._path.startsWith(path)"
+            v-if="hasNext"
             :link="next"
             :icon="ui.icons.navPrev ?? ICON_PREV"
             class="next"
@@ -21,7 +24,7 @@
 
 <script setup lang="ts">
 
-defineProps<{
+const props = defineProps<{
     path: string
 }>()
 
@@ -31,6 +34,13 @@ const { ui } = useAppConfig()
 
 const ICON_NEXT = 'i-heroicons-arrow-left-20-solid'
 const ICON_PREV = 'i-heroicons-arrow-right-20-solid'
+
+const hasPrev = computed(() => {
+    return prev?.value && prev.value?._path.startsWith(props.path)
+})
+const hasNext = computed(() => {
+    return next?.value && next.value?._path.startsWith(props.path)
+})
 
 </script>
 
