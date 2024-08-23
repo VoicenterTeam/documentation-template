@@ -78,7 +78,7 @@ export default defineNuxtModule<{
         })
         nuxt.hook('build:done', async () => {
             try {
-                console.log('start api doc')
+                console.log('start api doc', entryPoints)
                 const docApp = await TypeDoc.Application.bootstrapWithPlugins({
                     ...baseDocConfigs,
                     entryPoints: [ ...entryPoints ],
