@@ -76,6 +76,7 @@ export default defineNuxtModule<{
         })
         nuxt.hook('build:done', async () => {
             try {
+                console.log('start api doc')
                 const docApp = await TypeDoc.Application.bootstrapWithPlugins({
                     ...baseDocConfigs,
                     entryPoints: [ ...entryPoints ],
@@ -89,7 +90,8 @@ export default defineNuxtModule<{
 
                     const globalFile = resolver.resolve(outputDir, 'global.md')
                     const globalGroupFile = resolver.resolve(outputDir, '_group.md')
-
+                    console.log('globalFile', globalFile)
+                    console.log('globalGroupFile', globalGroupFile)
                     if (fs.existsSync(globalFile)) {
                         fs.renameSync(globalFile, resolver.resolve(outputDir, '1.global.md'))
                     } else if (fs.existsSync(globalGroupFile)) {
