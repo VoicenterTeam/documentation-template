@@ -69,9 +69,11 @@ export default defineNuxtModule<{
             return
         }
         nuxt.hook('prepare:types', (opts) => {
+            const addPoints = [ ...entryPoints.map((i: string) => isAbsolute(i) ? i : `../${i}`) ]
+            console.log('addPoints', addPoints)
             opts.tsConfig.include = [
                 ...(opts.tsConfig.include || []),
-                ...entryPoints.map((i: string) => isAbsolute(i) ? i : `../${i}`), // Example: Add your custom paths here
+                ...addPoints, // Example: Add your custom paths here
             ]
         })
         nuxt.hook('build:done', async () => {
