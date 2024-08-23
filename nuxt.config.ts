@@ -15,7 +15,10 @@ export default defineNuxtConfig({
     ],
     content: {
         //navigation: true,
-        documentDriven: true,
+        documentDriven: {
+            page: true,
+            surround: false
+        },
         experimental: {
             search: {
                 ignoredTags: [ 'style', 'code' ]

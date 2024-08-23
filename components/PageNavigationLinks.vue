@@ -29,7 +29,9 @@
                             class="nav-icon"
                         />
                     </div>
-                    <span class="text-base truncate">{{ link.label }}</span>
+                    <div class="text-base truncate">
+                        {{ link.label }}
+                    </div>
                     <UIcon
                         :name="'i-heroicons-chevron-right-20-solid'"
                         :class="{ 'rotate-90': open }"
@@ -40,7 +42,7 @@
                 <div class="pl-2 groups-data">
                     <div
                         v-show="open"
-                        class="pt-3"
+                        class="pt-3 space-y-2"
                     >
                         <template
                             v-for="(navItem, i) in link.children"

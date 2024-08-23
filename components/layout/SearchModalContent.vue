@@ -70,7 +70,7 @@
 <script setup lang="ts">
 import type { SearchResult } from 'minisearch'
 
-const SCORED = 30
+const SCORED = 20
 const emit = defineEmits([ 'clear' ])
 
 const query = ref('')

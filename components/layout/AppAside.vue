@@ -36,7 +36,7 @@ defineProps<{
         }
     }
     .groups-data .nav-item {
-        @apply border-s border-gray-200 dark:border-gray-800 space-y-2 pl-2 mb-1;
+        @apply border-s border-gray-200 dark:border-gray-800 pl-2 mb-1;
     }
     .group-block:has(a.router-link-active) {
         & > .group-item-folder > .nav-icon-block {
