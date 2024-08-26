@@ -6,7 +6,7 @@
                 <LayoutAppSiteName />
             </div>
             <LayoutAppTopNavigation />
-            <div class="flex justify-end items-center lg:flex-1">
+            <div class="flex justify-end items-center lg:flex-1 gap-1">
                 <ClientOnly>
                     <ContentSearch />
                 </ClientOnly>

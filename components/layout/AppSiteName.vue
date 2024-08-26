@@ -2,7 +2,7 @@
     <ClientOnly>
         <NuxtLink
             v-if="seo?.siteName"
-            to="/public"
+            to="/"
             class="text-sm items-center gap-1 hidden sm:inline-flex"
         >
             <span>{{ seo?.siteName }}</span>
