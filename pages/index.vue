@@ -7,7 +7,6 @@
 <script setup lang="ts">
 
 const { seo } = useAppConfig()
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 
 useHead({
     title: seo.siteName
@@ -15,9 +14,9 @@ useHead({
 
 useSeoMeta({
     titleTemplate: '',
-    title: page.value?.title || seo.siteName,
-    ogTitle: page.value?.title || seo.siteName,
-    description: page.value?.description,
-    ogDescription: page.value?.description
+    title: seo.siteName,
+    ogTitle: seo.siteName,
+    description: seo.siteDescription,
+    ogDescription: seo.siteDescription
 })
 </script>
