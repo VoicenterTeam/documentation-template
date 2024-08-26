@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         //navigation: true,
         documentDriven: {
             page: true,
-            surround: false
+            surround: true
         },
         experimental: {
             search: {
