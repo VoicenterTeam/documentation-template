@@ -39,7 +39,7 @@ export default defineAppConfig({
         indexHeaderTemplate: ''
     },
     header: {
-        showSiteName: false
+        showSiteName: true
         // height: '200px'
     }
     // footer: {
