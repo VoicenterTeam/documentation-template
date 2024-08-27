@@ -13,7 +13,7 @@ useHead({
 })
 
 useSeoMeta({
-    titleTemplate: '',
+    titleTemplate: seo.indexHeaderTemplate ?? '',
     title: seo.siteName,
     ogTitle: seo.siteName,
     description: seo.siteDescription,

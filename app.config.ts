@@ -33,9 +33,13 @@ export default defineAppConfig({
     },
     seo: {
         siteName: 'Nuxt UI VC Doc',
-        siteDescription: 'Nuxt UI VC Doc Template'
+        siteDescription: 'Nuxt UI VC Doc Template',
+        docsHeaderTemplate: '%s - Docs',
+        apiHeaderTemplate: '%s - API',
+        indexHeaderTemplate: ''
     },
     header: {
+        showSiteName: false
         // height: '200px'
     }
     // footer: {

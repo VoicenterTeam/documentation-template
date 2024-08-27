@@ -5,7 +5,7 @@
             to="/"
             class="text-sm items-center gap-1 hidden sm:inline-flex"
         >
-            <span>{{ seo?.siteName }}</span>
+            <span v-if="header?.showSiteName">{{ seo?.siteName }}</span>
             <span v-if="siteVersion">({{ siteVersion }})</span>
         </NuxtLink>
     </ClientOnly>
@@ -14,6 +14,6 @@
 <script setup lang="ts">
 import { version } from '~/package.json'
 
-const { seo } = useAppConfig()
+const { seo, header } = useAppConfig()
 const siteVersion = version
 </script>

@@ -41,6 +41,7 @@ definePageMeta({
     layout: 'docs-api'
 })
 
+const { seo } = useAppConfig()
 const { path } = useRoute()
 const { data: page } = await useAsyncData('api', () => queryContent(path).findOne())
 
@@ -55,7 +56,7 @@ if (!page.value) {
 useContentHead(page as Ref<ParsedContent>)
 
 useSeoMeta({
-    titleTemplate: '%s - API',
+    titleTemplate: seo.apiHeaderTemplate ?? '%s - API',
     title: `${page.value.title}`,
     ogTitle: `${page.value.title}`,
     description: page.value.description,

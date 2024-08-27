@@ -44,6 +44,7 @@ definePageMeta({
     layout: 'docs'
 })
 
+const { seo } = useAppConfig()
 const { path } = useRoute()
 const { data: page } = await useAsyncData('docs', () => queryContent(path).findOne())
 
@@ -58,7 +59,7 @@ if (!page.value) {
 useContentHead(page as Ref<ParsedContent>)
 
 useSeoMeta({
-    titleTemplate: '%s - Docs',
+    titleTemplate: seo.docsHeaderTemplate ?? '%s - Docs',
     title: `${page.value.title}`,
     ogTitle: `${page.value.title}`,
     description: page.value.description,
