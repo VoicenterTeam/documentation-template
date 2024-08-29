@@ -11,12 +11,23 @@
                     <span>Nuxt Content reads the <span class="font-mono border border-gray-700 bg-gray-800 px-1.5 py-0.5 rounded-md">content/</span> directory in your project, parses <span class="font-mono border border-gray-700 bg-gray-800 px-1.5 py-0.5 rounded-md">.md</span>, <span class="font-mono border border-gray-700 bg-gray-800 px-1.5 py-0.5 rounded-md">.yml</span>, <span class="font-mono border border-gray-700 bg-gray-800 px-1.5 py-0.5 rounded-md">.csv</span> and <span class="font-mono border border-gray-700 bg-gray-800 px-1.5 py-0.5 rounded-md">.json</span> files to create a powerful data layer for your application. Use Vue components in Markdown with the MDC syntax.</span>
                 </div>
             </div>
-            <WelcomePageNavigation />
+            <div>
+                <WelcomePageNavigation
+                    :links="links"
+                    class="grid gap-6 max-w-md mx-auto"
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-
+const links = [
+    {
+        label: 'Get Started',
+        link: '/docs',
+        icon: 'i-heroicons:book-open'
+    }
+]
 </script>
 

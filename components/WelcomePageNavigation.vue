@@ -1,22 +1,21 @@
 <template>
-    <div class="w-full flex justify-center">
-        <UButton
-            to="/docs/get-started"
-            size="lg"
-            label="Get Started"
-            color="primary"
-        >
-            <template #trailing>
-                <UIcon
-                    name="i-heroicons-arrow-right-20-solid"
-                    class="w-5 h-5"
-                />
-            </template>
-        </UButton>
+    <div class="main-navigation-block">
+        <PageNavigationLink
+            v-for="navItem in links"
+            :key="navItem.link"
+            :link-data="navItem"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
-
+interface ILinkData {
+    label: string
+    link: string
+    info?: string
+    icon?: string
+}
+defineProps<{
+    links: Array<ILinkData>
+}>()
 </script>
-
