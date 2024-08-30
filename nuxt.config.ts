@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
 const currentDirLocal = dirname(fileURLToPath(import.meta.url))
+// const currentDirProcess = process.cwd()
 
 export default defineNuxtConfig({
     devtools: { enabled: true },
@@ -14,7 +15,7 @@ export default defineNuxtConfig({
         './modules/typedocGenerate.ts'
     ],
     content: {
-        //navigation: true,
+        // navigation: false,
         documentDriven: {
             page: true,
             surround: true
@@ -34,7 +35,7 @@ export default defineNuxtConfig({
             preload: [ 'json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini' ]
         },
         navigation: {
-            fields: [ 'icon', 'to', 'target' ]
+            fields: [ 'icon', 'to', 'target', 'title' ]
         }
     },
     hooks: {
@@ -62,8 +63,8 @@ export default defineNuxtConfig({
             redirect: '/docs/get-started',
             prerender: false
         },
-        '/api': {
-            redirect: '/api/global',
+        '/api-docs': {
+            redirect: '/api-docs/global',
             prerender: false
         },
     },

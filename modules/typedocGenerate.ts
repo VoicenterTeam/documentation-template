@@ -13,7 +13,7 @@ type TUiTypedocModule = {
     exclude?: Array<string>
 }
 
-const DEFAULT_OUT_TYPES_PATH = './content/api'
+const DEFAULT_OUT_TYPES_PATH = './content/api-docs'
 
 const resolver = createResolver(import.meta.url)
 const resolvePath  = resolver.resolvePath('./', { cwd: './' })
@@ -57,7 +57,7 @@ export default defineNuxtModule<TUiTypedocModule>({
         },
     },
     defaults: {
-        outContent: './content/api',
+        outContent: './content/api-docs',
         typesGenerate: false,
         entryPoints: [],
         exclude: []

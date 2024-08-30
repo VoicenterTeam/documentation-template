@@ -11,7 +11,7 @@
                     :class="{'text-primary': $route.path?.startsWith(nav.link)}"
                     class="text-sm/6 font-semibold flex items-center group"
                 >
-                    <div class="rounded-md p-1.5 inline-flex md:hidden ring-inset ring-1 bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700 group-hover:bg-primary group-hover:ring-primary group-hover:text-background">
+                    <div class="rounded-md p-1.5 inline-flex md:hidden ring-inset ring-1 bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700 group-hover:bg-primary group-hover:text-white group-hover:ring-primary group-hover:text-background">
                         <UIcon
                             :name="nav.icon"
                             class="size-5"
@@ -43,11 +43,11 @@ const navigationList = computed(() => {
             icon: ui.icons.navDocs ?? 'i-heroicons:book-open'
         }
     ]
-    const apiData = navigation?.value.find(i => i._path === '/api')
+    const apiData = navigation?.value.find(i => i._path === '/api-docs')
     if (apiData) {
         baseLinks.push({
             title: 'Api',
-            link: '/api',
+            link: '/api-docs',
             icon: ui.icons.navApi ?? 'i-heroicons:square-3-stack-3d'
         })
     }

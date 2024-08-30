@@ -7,7 +7,6 @@
             <div class="w-full">
                 <PageHeader
                     :title="page?.title"
-                    :description="page?.description"
                     :headline="headline"
                     :icon="page?.icon"
                 />
@@ -38,12 +37,13 @@ import type { ParsedContent } from '@nuxt/content'
 import { splitByCase, upperFirst } from 'scule'
 
 definePageMeta({
-    layout: 'docs-api'
+    layout: 'api-docs'
 })
 
 const { seo } = useAppConfig()
 const { path } = useRoute()
-const { data: page } = await useAsyncData('api', () => queryContent(path).findOne())
+
+const { data: page } = await useAsyncData('api-docs', () => queryContent(path).findOne())
 
 if (!page.value) {
     throw createError({

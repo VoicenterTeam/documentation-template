@@ -26,6 +26,6 @@ import { useNavigationMappedData } from '~/composables/useNavigationData'
 
 const navigation = inject<Ref<NavItem[]>>('navigation')
 
-const { navigationListMapped } = useNavigationMappedData(navigation, '/api')
+const { navigationListMapped } = useNavigationMappedData(navigation, '/api-docs')
 </script>
 
