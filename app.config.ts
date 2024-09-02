@@ -39,6 +39,7 @@ export default defineAppConfig({
         indexHeaderTemplate: ''
     },
     header: {
+        version: '',
         showSiteName: true
         // height: '200px'
     }
