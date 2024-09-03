@@ -5,7 +5,6 @@ export default defineNuxtPlugin(nuxtApp => {
         themeConfig: {
             type: 'local',
             themeName: 'redGreen'
-        },
-        components: []
+        }
     })
 })
