@@ -14,7 +14,7 @@
     "@nuxt/content": "^2.13.2",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
-    "@voicenter-team/voicenter-ui-plus": "^0.5.17",
+    "@voicenter-team/voicenter-ui-plus": "^0.5.18",
     "nuxt": "^3.12.4",
     "typedoc": "^0.26.6",
     "typedoc-plugin-markdown": "^4.2.5"

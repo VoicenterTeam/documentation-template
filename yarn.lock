@@ -2294,10 +2294,10 @@
   dependencies:
     "@voicenter-team/eslint-config-ts" "1.0.24"
 
-"@voicenter-team/voicenter-ui-plus@^0.5.17":
-  version "0.5.17"
-  resolved "https://registry.yarnpkg.com/@voicenter-team/voicenter-ui-plus/-/voicenter-ui-plus-0.5.17.tgz#cb95b399fa512150478765d86fd375b8f35fe2ca"
-  integrity sha512-BTN/8JNB49+ndfQ77y13MG8s0EVn67IA0Zs2CzFMYpMc7JY0jXS4eBnW9HZKkADAHIO5G/a9aWJf1QVsKQVx0Q==
+"@voicenter-team/voicenter-ui-plus@^0.5.18":
+  version "0.5.18"
+  resolved "https://registry.yarnpkg.com/@voicenter-team/voicenter-ui-plus/-/voicenter-ui-plus-0.5.18.tgz#34885caf64648de866f67c7bfbb9ffd0068b7e14"
+  integrity sha512-vmWXTeXIcnF76qdt+a0iAC+5YfZn1N5bL3PpOkM6uCqOxj/ZpuXA+B+JKuG9aXCyc7y7nE5lQ448zD/CHaw9jA==
   dependencies:
     "@vuepic/vue-datepicker" "3.0.0"
     date-fns "^2.29.2"
