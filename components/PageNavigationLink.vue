@@ -4,7 +4,7 @@
         <NuxtLink
             :to="linkData.link"
             :class="!!linkData.info ? 'flex-col' : 'flex-row items-center'"
-            class="index-navigation-item__content h-full leading-0 rounded-xl border-2 border-transparent flex bg-white dark:bg-gray-900 hover:bg-gradient-to-l to-white/1 from-primary/5"
+            class="index-navigation-item__content h-full leading-0 rounded-xl flex bg-white dark:bg-gray-900 hover:bg-gradient-to-l to-white/1 from-primary/5"
         >
             <div
                 v-if="linkData.icon"
@@ -52,7 +52,7 @@ defineProps<{
 .index-navigation-item {
     --dark-gradient: rgb(var(--color-primary-500)), rgb(var(--color-primary-600)), rgba(255, 255, 255, 0.3), rgb(var(--color-primary-500));
     --light-gradient: rgb(var(--color-primary-400)), rgb(var(--color-primary-600)), rgba(179, 178, 178, 0.5), rgb(var(--color-primary-400));
-    @apply border-transparent border min-h-min rounded-xl border-gray-200 dark:border-transparent hover:border-transparent;
+    @apply min-h-min rounded-xl hover:border-transparent;
     .gradient-border {
         opacity: 0;
         position: absolute;
@@ -64,7 +64,7 @@ defineProps<{
         transform: translate(-1px, -1px);
     }
     .index-navigation-item__content {
-        @apply relative py-4 px-4 rounded-xl flex gap-x-4 dark:border-none bg-white dark:bg-gray-900;
+        @apply relative py-4 px-4 rounded-xl flex gap-x-4 bg-gray-50 dark:bg-gray-900;
     }
     &:hover {
         .gradient-border {
@@ -78,6 +78,7 @@ defineProps<{
 }
 .light {
     .index-navigation-item {
+        border: 1px solid rgb(var(--color-gray-200));
         &:hover {
             .gradient-border {
                 background: linear-gradient(var(--gradient-angle), var(--light-gradient));
