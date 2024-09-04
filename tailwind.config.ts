@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* @ts-ignore */
+import config from '@voicenter-team/voicenter-ui-plus/tailwind.config'
 // import typography from '@tailwindcss/typography'
 
 export default <Partial<Config>> {
@@ -11,7 +14,17 @@ export default <Partial<Config>> {
     theme: {
         extend: {
             colors: {
-                primary: colors.emerald
+                ...config.theme.colors,
+                primary: colors.red
+            },
+            borderColor: {
+                ...config.theme.borderColor
+            },
+            backgroundColor: {
+                ...config.theme.backgroundColor
+            },
+            boxShadow: {
+                ...config.theme.boxShadow
             },
             typography: (theme: any) => {
                 return {
