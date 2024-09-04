@@ -3,6 +3,9 @@ import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 
 import config from '@voicenter-team/voicenter-ui-plus/tailwind.config'
+import { unset } from 'lodash-es'
+
+unset(config, 'theme.colors.primary')
 
 export default <Partial<Config>> {
     darkMode: 'class',

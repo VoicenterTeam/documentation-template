@@ -79,7 +79,6 @@ export default defineNuxtConfig({
     //     global: true,
     // },
     css: [
-        '@voicenter-team/voicenter-ui-plus/library/style.css',
         join(currentDirLocal, 'assets/css/main.css'),
         join(currentDirLocal, 'assets/css/tailwind.css')
     ]

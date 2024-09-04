@@ -55,6 +55,24 @@ export default defineNuxtConfig({
     ],
 })
 ```
+To use the Voicenter UI library, you need to add styles above tailwind css (components are added by default):
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+    extends: [
+        [ 'github:VoicenterTeam/documentation-template', { install: true } ]
+    ],
+    uiTypedoc: {
+        /* if need to generate api-docs folder by entryPoints */
+        typesGenerate: true, // true | false
+        entryPoints: [ resolve(__dirname, '../dist/some-file.d.ts') ]
+    },
+    css: [
+        '@voicenter-team/voicenter-ui-plus/library/style.css',
+        './assets/css/tailwind.css'
+    ],
+})
+```
+
 3. Configure app configs (to change default configs),  Example:
 ```ts [app.config.ts]
 export default defineAppConfig({

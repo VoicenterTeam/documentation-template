@@ -15,9 +15,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
     "@voicenter-team/voicenter-ui-plus": "^0.5.20",
-    "nuxt": "^3.12.4",
-    "typedoc": "^0.26.6",
-    "typedoc-plugin-markdown": "^4.2.5"
+    "nuxt": "^3.12.4"
   },
   "files": [
     "app/",
@@ -42,6 +40,8 @@
     "nuxt-og-image": "^3.0.0-rc.64",
     "sass": "1.77.6",
     "typescript": "5.3.3",
+    "typedoc": "^0.26.6",
+    "typedoc-plugin-markdown": "^4.2.5",
     "vite-plugin-static-copy": "^1.0.6",
     "vue-tsc": "^2.0.26"
   },
