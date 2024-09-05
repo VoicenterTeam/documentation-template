@@ -28,6 +28,7 @@
     "tailwind.config.ts"
   ],
   "devDependencies": {
+    "@iconify-json/vscode-icons": "^1.2.0",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.5.0",
     "@nuxt/fonts": "^0.7.2",
@@ -39,9 +40,9 @@
     "eslint-plugin-vue": "^9.26.0",
     "nuxt-og-image": "^3.0.0-rc.64",
     "sass": "1.77.6",
-    "typescript": "5.3.3",
     "typedoc": "^0.26.6",
     "typedoc-plugin-markdown": "^4.2.5",
+    "typescript": "5.3.3",
     "vite-plugin-static-copy": "^1.0.6",
     "vue-tsc": "^2.0.26"
   },
