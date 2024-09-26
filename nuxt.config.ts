@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/content',
         '@nuxt/ui',
-        '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
+        // '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
         './modules/addPluginsModule.ts',
         './modules/typedocGenerate.ts'
     ],

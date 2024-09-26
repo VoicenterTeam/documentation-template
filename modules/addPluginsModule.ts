@@ -3,7 +3,7 @@ import { defineNuxtModule, installModule } from '@nuxt/kit'
 export default defineNuxtModule({
     async setup (options, nuxt) {
         // Add modules you want to include
-        const pluginsRequired = [ '@nuxt/content', '@nuxt/ui', '@nuxt/image' ]
+        const pluginsRequired = [ '@nuxt/content', '@nuxt/ui' ]
 
         nuxt.options.modules = [ ...new Set([ ...nuxt.options.modules, ...pluginsRequired ]) ]
 
