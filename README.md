@@ -93,7 +93,10 @@ export default defineAppConfig({
         indexHeaderTemplate: 'Project Overview | VoicenterTeamDocs'
     },
     header: {
-        showSiteName: true
+        version: '',
+        showSiteName: true,
+        apiLinkName: 'Api',
+        exampleLinkName: 'Demo'
     },
 })
 ```

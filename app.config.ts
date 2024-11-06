@@ -40,7 +40,9 @@ export default defineAppConfig({
     },
     header: {
         version: '',
-        showSiteName: true
+        showSiteName: true,
+        apiLinkName: 'Api',
+        exampleLinkName: 'Demo'
         // height: '200px'
     }
     // footer: {

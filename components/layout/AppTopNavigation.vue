@@ -33,7 +33,7 @@ import type { NavItem } from '@nuxt/content'
 const navigation = inject<Ref<NavItem[]>>('navigation')
 
 const routes = useRouter().options.routes
-const { ui } = useAppConfig()
+const { ui, header } = useAppConfig()
 
 const navigationList = computed(() => {
     const baseLinks = [
@@ -46,14 +46,14 @@ const navigationList = computed(() => {
     const apiData = navigation?.value.find(i => i._path === '/api-docs')
     if (apiData) {
         baseLinks.push({
-            title: 'Api',
+            title: header.apiLinkName || 'Api',
             link: '/api-docs',
             icon: ui.icons.navApi ?? 'i-heroicons:square-3-stack-3d'
         })
     }
     if (routes.find(i => i.name === 'example')) {
         baseLinks.push({
-            title: 'Demo',
+            title: header.exampleLinkName || 'Demo',
             link: '/example',
             icon: ui.icons.navDemo ?? 'i-heroicons:computer-desktop'
         })

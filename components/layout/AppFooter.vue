@@ -17,7 +17,7 @@
         </div>
         <div>
             <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-8 lg:py-4 lg:flex lg:items-center lg:justify-between lg:gap-x-3">
-                Footer
+                <slot />
             </div>
         </div>
     </footer>
