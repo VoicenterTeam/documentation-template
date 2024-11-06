@@ -7,10 +7,11 @@ const currentDirLocal = dirname(fileURLToPath(import.meta.url))
 
 export default defineNuxtConfig({
     devtools: { enabled: true },
+    ssr: false,
     modules: [
         '@nuxt/content',
         '@nuxt/ui',
-        '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
+        // '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
         './modules/addPluginsModule.ts',
         './modules/typedocGenerate.ts'
     ],
@@ -24,6 +25,7 @@ export default defineNuxtConfig({
             surround: true
         },
         experimental: {
+            clientDB: true,
             search: {
                 ignoredTags: [ 'style', 'code' ]
             },
