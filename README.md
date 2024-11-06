@@ -140,7 +140,10 @@ export default defineAppConfig({
         indexHeaderTemplate: ''
     },
     header: {
-        showSiteName: true
+        version: '',
+        showSiteName: true,
+        apiLinkName: 'Api',
+        exampleLinkName: 'Demo'
         // height: '200px'
     }
 })
