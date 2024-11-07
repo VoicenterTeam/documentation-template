@@ -28,6 +28,7 @@
     "tailwind.config.ts"
   ],
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.1",
     "@iconify-json/vscode-icons": "^1.2.0",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.5.0",
