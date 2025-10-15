@@ -13,15 +13,15 @@ The Template for VoicenterTeam projects documentations.
 
 1. Create folder docs and create new nuxt project:
 ```bash [Terminal]
-npx nuxi@3 init docs
+npx nuxi@3.8.1 init docs
 ```
 OR
 ```bash [Terminal]
-cd docs && npx nuxi@3 init .
+cd docs && npx nuxi@3.8.1 init .
 ```
 With Template:
 ```bash [Terminal]
-npx nuxi@3 init . -t content   
+npx nuxi@3.8.1 init . -t content   
 ```
 
 2. Install next dependencies:
