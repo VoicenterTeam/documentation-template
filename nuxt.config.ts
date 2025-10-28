@@ -76,6 +76,12 @@ export default defineNuxtConfig({
     uiTypedoc: {
         // typesGenerate: true,
         // entryPoints: [ join(currentDirProcess, 'test/index.ts') ]
+        // includedMd: [
+        //     {
+        //         fileName: 'addMdFile.md',
+        //         destinationName: '2.add-md-file.md'
+        //     }
+        // ]
     },
     // components: {
     //     global: true,

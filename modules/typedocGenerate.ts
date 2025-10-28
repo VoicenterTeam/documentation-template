@@ -6,11 +6,14 @@ import fs from 'fs'
 import { join, resolve } from 'path'
 import type { Nuxt } from '@nuxt/schema'
 
+type TAddDocOptions = { fileName: string, destinationName: string }
+
 type TUiTypedocModule = {
     typesGenerate?: boolean
     outContent?: string
     entryPoints?: Array<string>
     exclude?: Array<string>
+    includedMd?: Array<TAddDocOptions>
 }
 
 const DEFAULT_OUT_TYPES_PATH = './content/api-docs'
@@ -48,6 +51,22 @@ async function copyRootReadmeFile (nuxt: Nuxt) {
     })
 }
 
+async function moveMDFilesToDocs (filesToMove: Array<TAddDocOptions>) {
+    //  Need to move md files from root to docs folders
+    const currentPath  = await resolvePath.then()
+    const rootPath = isInsideAnotherProject(currentPath) ? resolve(currentPath, '..') : currentPath
+    const destFolder = join(currentPath, 'content/docs')
+    if (!fs.existsSync(destFolder)) {
+        fs.mkdirSync(destFolder, { recursive: true })
+    }
+    filesToMove.forEach((file) => {
+        const source = resolver.resolve(rootPath, file.fileName)
+        const destination = resolver.resolve(destFolder, file.destinationName)
+        fs.copyFileSync(source, destination)
+        console.log(source + ' copied file to ' + destination)
+    })
+}
+
 export default defineNuxtModule<TUiTypedocModule>({
     meta: {
         name: 'ui-typedoc',
@@ -69,6 +88,11 @@ export default defineNuxtModule<TUiTypedocModule>({
             return
         }
         await copyRootReadmeFile(nuxt)
+
+        if (options.includedMd?.length) {
+            await moveMDFilesToDocs(options.includedMd)
+        }
+
         const hasTypedocGenerate = docOptions?.typesGenerate !== undefined ? docOptions?.typesGenerate : options.typesGenerate
         if (!hasTypedocGenerate) {
             return
