@@ -67,7 +67,6 @@ export default defineNuxtConfig({
         entryPoints: [ resolve(__dirname, '../dist/some-file.d.ts') ]
     },
     css: [
-        '@voicenter-team/voicenter-ui-plus/library/style.css',
         './assets/css/tailwind.css'
     ],
 })
