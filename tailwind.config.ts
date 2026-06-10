@@ -2,27 +2,12 @@
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 
-import config from '@voicenter-team/voicenter-ui-plus/tailwind.config'
-import { unset } from 'lodash-es'
-
-unset(config, 'theme.colors.primary')
-
 export default <Partial<Config>> {
     darkMode: 'class',
     theme: {
         extend: {
             colors: {
-                ...config.theme?.colors,
                 primary: colors.red
-            },
-            borderColor: {
-                ...config.theme?.borderColor
-            },
-            backgroundColor: {
-                ...config.theme?.backgroundColor
-            },
-            boxShadow: {
-                ...config.theme?.boxShadow
             },
             typography: (theme: any) => {
                 return {
