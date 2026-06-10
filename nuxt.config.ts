@@ -8,11 +8,14 @@ const currentDirLocal = dirname(fileURLToPath(import.meta.url))
 export default defineNuxtConfig({
     devtools: { enabled: true },
     ssr: false,
+    experimental: {
+        viteEnvironmentApi: true
+    },
     modules: [
         '@nuxt/content',
         '@nuxt/ui',
+        '@nuxt/image',
         // '@nuxt/image', /*'@nuxt/fonts', 'nuxt-og-image',*/
-        './modules/addPluginsModule.ts',
         './modules/typedocGenerate.ts'
     ],
     ui: {

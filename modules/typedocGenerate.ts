@@ -18,7 +18,7 @@ type TUiTypedocModule = {
 
 const DEFAULT_OUT_TYPES_PATH = './content/api-docs'
 
-const resolver = createResolver(import.meta.url)
+const resolver = createResolver(import.meta?.url)
 const resolvePath  = resolver.resolvePath('./', { cwd: './' })
 const currentDirProcess = process.cwd()
 
@@ -82,7 +82,7 @@ export default defineNuxtModule<TUiTypedocModule>({
         exclude: []
     },
     async setup (options, nuxt) {
-        const resolver = createResolver(import.meta.url)
+        const resolver = createResolver(import.meta?.url)
         const docOptions = (nuxt.options as any)?.uiTypedoc
         if (!docOptions) {
             return
